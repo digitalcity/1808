@@ -1,0 +1,48 @@
+/* .ant-pagination-item-active a {
+  color: aquamarine;
+}
+.ant-pagination-item-active {
+  border-color: aquamarine;
+}
+
+.ant-pagination-item:focus,
+.ant-pagination-item:hover {
+  transition: all 0.3s;
+  border-color: aquamarine;
+}
+.ant-pagination-item:focus a,
+.ant-pagination-item:hover a {
+  transition: all 0.3s;
+  color: aquamarine;
+}
+.ant-pagination-item {
+  border-radius: 12px;
+} */
+.msg {
+  display: block;
+}
+.message-enter {
+  opacity: 0;
+  font-size: 16px;
+  margin-top: 20px;
+}
+.message-enter-active {
+  opacity: 1;
+  transition: all 3000ms linear;
+  margin-top: 0;
+}
+
+.todo-enter {
+  opacity: 0;
+}
+.todo-enter-active {
+  opacity: 1;
+  transition: all 1000ms linear;
+}
+.todo-exit {
+  opacity: 1;
+}
+.todo-exit-active {
+  opacity: 0;
+  transition: all 1000ms linear;
+}

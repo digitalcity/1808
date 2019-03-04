@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script src="https://cdn.bootcss.com/axios/0.19.0-beta.1/axios.min.js"></script>
+    <script>
+      // es6 promise
+      // 同步  异步(定时器 动画 ajax setState)
+      // 原来想要在异步操作之后执行某件事 都是用的是 回调函数
+      // 回调地狱
+      // let state = true
+      // axios
+      //   .get('http://localhost:5000/username')
+      //   .then(res => {
+      //     console.log(res.data)
+      //     if (res.data) {
+      //       // 判断后台的数据 如果出错
+      //       state = false
+      //     }else{
+
+      //     }
+      //   })
+      //   .then(() => {
+      //     if (state === true) {
+      //       return axios.get('http://localhost:5000/password').then(res => {
+      //         console.log(res.data)
+      //       })
+      //     }
+      //   })
+      //   .then(() => {
+      //     console.log(234)
+      //   })
+
+      // 1. 买菜  2.做饭  3.吃
+
+      // es6 promise 写法
+      // const promise = new Promise((resolve, reject) => {
+      // resolve  reject 代表 promise 状态 前者完成  后者失败
+      // 异步操作 例如 ajax  setTimeout 等
+      // if(){
+      //   resolve()
+      // }else{
+      //   reject()
+      // }
+      // })
+      // 1.将异步操作写到 promise 的参数函数内
+      // 2.使用promise的then方法定义 resolve   then方法的第一个参数指的是就是resolve函数
+
+      function step1(resolve, reject) {
+        console.log('买菜中')
+        setTimeout(() => {
+          console.log('买菜完毕')
+          resolve()
+        }, 1000)
+      }
+      function step2(resolve, reject) {
+        console.log('做饭中')
+        setTimeout(() => {
+          console.log('做饭完毕')
+          resolve()
+        }, 1000)
+      }
+      function step3(resolve, reject) {
+        console.log('吃饭')
+        setTimeout(() => {
+          console.log('吃完')
+          resolve()
+        }, 1000)
+      }
+      // 写到Promise内的函数会被立即执行
+      new Promise(step1)
+        .then(() => {
+          return new Promise(step2)
+        })
+        .then(() => {
+          return new Promise(step3)
+        })
+      // 多个异步同时开始执行  全部执行完毕之后 做其他操作
+      // all 方法
+      // axiso.get() 就是 promise实例
+      Promise.all([promise1, promise2, promise3]).then(() => {
+        // 所有 promise 执行完毕 后要做事
+      })
+    </script>
+  </body>
+</html>
